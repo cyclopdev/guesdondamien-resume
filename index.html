@@ -113,6 +113,31 @@
         margin-top: 30px;
       }
     }
+    /* MODE NUIT AUTOMATIQUE */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #181a1b;
+        color: #f1f1f1;
+      }
+      .container {
+        background: #23272a;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      }
+      h1, h2, .item-title {
+        color: #90caf9;
+        border-bottom-color: #374151;
+      }
+      h2 {
+        border-bottom: 2px solid #374151;
+      }
+      aside {
+        background: linear-gradient(135deg, #23272a 0%, #283593 100%);
+        color: #90caf9;
+      }
+      a {
+        color: #90caf9;
+      }
+    }
   </style>
 </head>
 <body>
@@ -136,7 +161,7 @@
       Directeur technique avec 20 ans d’expérience, reconnu pour le pilotage d’équipes, la direction de projets stratégiques et l’architecture d’infrastructures complexes et sécurisées. Forte expertise dans la transformation numérique, l’optimisation des coûts et la sécurisation des systèmes d’information. Sens aigu de la qualité de service et capacité à fédérer et faire évoluer les équipes vers l’excellence opérationnelle. Ouvert aux opportunités de Directeur Technique, DSI ou CTO pour accompagner la croissance et l’innovation d’une organisation.
     </div>
 
-    <!-- Contenu principal + bande latérale -->
+    <!-- Contenu principal + barre latérale -->
     <div class="cv-flex">
       <!-- Bande latérale -->
       <aside>

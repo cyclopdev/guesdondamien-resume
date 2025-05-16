@@ -1,45 +1,78 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- SERIAL: v20240518-02b -->
+  <!-- SERIAL: v20240518-03 -->
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Damien GUESDON - CV</title>
   <style>
-    /* Masque tout sauf la langue active */
-    [lang]:not(:target) { display: none; } 
-    .language-flag.active { border: 2px solid blue; }
+    /* Masque toutes les sections par défaut */
+    [lang] { display: none; }
+
+    /* Affiche la section de la langue active */
+    body.lang-fr [lang="fr"],
+    body.lang-en [lang="en"] {
+      display: block !important;
+    }
+
+    /* Styles des drapeaux */
+    .language-flag {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: 0.7;
+    }
+    .language-flag.active {
+      opacity: 1;
+      border-color: #1a237e;
+    }
   </style>
 </head>
 <body>
   <div class="language-switcher">
-    <a href="#fr" class="language-flag active">FR</a>
-    <a href="#en" class="language-flag">EN</a>
+    <img src="https://flagcdn.com/fr.svg" class="language-flag active" data-lang="fr" alt="Français">
+    <img src="https://flagcdn.com/gb.svg" class="language-flag" data-lang="en" alt="English">
   </div>
 
-  <!-- FRANÇAIS -->
-  <div id="fr" lang="fr">
-    <h1>Contenu Français</h1>
+  <!-- Section française -->
+  <div lang="fr">
+    <h1>Damien GUESDON</h1>
+    <p>CV en français...</p>
   </div>
 
-  <!-- ENGLISH -->
-  <div id="en" lang="en">
-    <h1>English Content</h1>
+  <!-- Section anglaise -->
+  <div lang="en">
+    <h1>Damien GUESDON</h1>
+    <p>Resume in English...</p>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const flags = document.querySelectorAll('.language-flag');
-      flags.forEach(flag => {
-        flag.addEventListener('click', function(e) {
-          flags.forEach(f => f.classList.remove('active'));
-          this.classList.add('active');
+      // Fonction pour basculer la langue
+      function switchLanguage(lang) {
+        // Met à jour la classe du body
+        document.body.className = 'lang-' + lang;
+        
+        // Met à jour les drapeaux
+        document.querySelectorAll('.language-flag').forEach(flag => {
+          flag.classList.toggle('active', flag.dataset.lang === lang);
+        });
+
+        // Sauvegarde la préférence
+        localStorage.setItem('preferredLang', lang);
+      }
+
+      // Récupère la langue sauvegardée ou utilise le français par défaut
+      const savedLang = localStorage.getItem('preferredLang') || 'fr';
+      switchLanguage(savedLang);
+
+      // Gère les clics sur les drapeaux
+      document.querySelectorAll('.language-flag').forEach(flag => {
+        flag.addEventListener('click', () => {
+          switchLanguage(flag.dataset.lang);
         });
       });
-      
-      // Affiche FR par défaut si aucune ancre dans l'URL
-      if (!window.location.hash) {
-        window.location.hash = 'fr';
-      }
     });
   </script>
 </body>

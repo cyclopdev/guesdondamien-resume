@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- SERIAL: v20240518-02 -->
+  <!-- SERIAL: v20240518-02b -->
   <meta charset="UTF-8">
-  <title>Test Multilingue</title>
+  <title>Damien GUESDON - CV</title>
   <style>
-    [lang] { display: none; }
-    body.lang-fr [lang="fr"],
-    body.lang-en [lang="en"] { display: block !important; }
+    /* Masque tout sauf la langue active */
+    [lang]:not(:target) { display: none; } 
     .language-flag.active { border: 2px solid blue; }
   </style>
 </head>
 <body>
-  <div>
-    <button class="language-flag active" data-lang="fr">FR</button>
-    <button class="language-flag" data-lang="en">EN</button>
+  <div class="language-switcher">
+    <a href="#fr" class="language-flag active">FR</a>
+    <a href="#en" class="language-flag">EN</a>
   </div>
-  <div lang="fr">
-    <h1>Bonjour</h1>
-    <p>Section française</p>
+
+  <!-- FRANÇAIS -->
+  <div id="fr" lang="fr">
+    <h1>Contenu Français</h1>
   </div>
-  <div lang="en">
-    <h1>Hello</h1>
-    <p>English section</p>
+
+  <!-- ENGLISH -->
+  <div id="en" lang="en">
+    <h1>English Content</h1>
   </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      function switchLanguage(lang) {
-        document.body.classList.remove('lang-fr', 'lang-en');
-        document.body.classList.add('lang-' + lang);
-        document.querySelectorAll('.language-flag').forEach(flag => {
-          flag.classList.toggle('active', flag.dataset.lang === lang);
+      const flags = document.querySelectorAll('.language-flag');
+      flags.forEach(flag => {
+        flag.addEventListener('click', function(e) {
+          flags.forEach(f => f.classList.remove('active'));
+          this.classList.add('active');
         });
-        localStorage.setItem('preferredLang', lang);
-      }
-      document.querySelectorAll('.language-flag').forEach(flag => {
-        flag.addEventListener('click', () => switchLanguage(flag.dataset.lang));
       });
-      const savedLang = localStorage.getItem('preferredLang');
-      switchLanguage(savedLang || 'fr');
+      
+      // Affiche FR par défaut si aucune ancre dans l'URL
+      if (!window.location.hash) {
+        window.location.hash = 'fr';
+      }
     });
   </script>
 </body>

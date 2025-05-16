@@ -428,34 +428,33 @@
     </div>
   </div>
   <script>
-    // Switch language using the hidden attribute for reliability
-    function switchLanguage(lang) {
-      let found = false;
-      document.querySelectorAll('[lang]').forEach(el => {
-        if (el.lang === lang) {
-          el.removeAttribute('hidden');
-          found = true;
-        } else {
-          el.setAttribute('hidden', '');
+    document.addEventListener('DOMContentLoaded', function() {
+      function switchLanguage(lang) {
+        let found = false;
+        document.querySelectorAll('[lang]').forEach(el => {
+          if (el.lang === lang) {
+            el.removeAttribute('hidden');
+            found = true;
+          } else {
+            el.setAttribute('hidden', '');
+          }
+        });
+        // Sécurité : si rien n'est affiché, afficher français
+        if (!found) {
+          document.querySelector('[lang="fr"]').removeAttribute('hidden');
         }
-      });
-      // Sécurité : si rien n'est affiché, afficher français
-      if (!found) {
-        document.querySelector('[lang="fr"]').removeAttribute('hidden');
+        document.querySelectorAll('.language-flag').forEach(flag => {
+          flag.classList.toggle('active', flag.dataset.lang === lang);
+        });
+        localStorage.setItem('preferredLang', lang);
       }
+      // On flag click
       document.querySelectorAll('.language-flag').forEach(flag => {
-        flag.classList.toggle('active', flag.dataset.lang === lang);
+        flag.addEventListener('click', () => {
+          switchLanguage(flag.dataset.lang);
+        });
       });
-      localStorage.setItem('preferredLang', lang);
-    }
-    // On flag click
-    document.querySelectorAll('.language-flag').forEach(flag => {
-      flag.addEventListener('click', () => {
-        switchLanguage(flag.dataset.lang);
-      });
-    });
-    // On load: preferred or browser language
-    document.addEventListener('DOMContentLoaded', () => {
+      // On load: preferred or browser language
       const savedLang = localStorage.getItem('preferredLang');
       if (savedLang) {
         switchLanguage(savedLang);

@@ -58,13 +58,11 @@
       margin-bottom: 0.8em;
       padding-left: 1.2em;
     }
-    /* Flex container pour sidebar + contenu */
     .cv-flex {
       display: flex;
       margin-top: 2em;
       gap: 40px;
     }
-    /* Style de la bande latérale */
     aside {
       flex-basis: 30%;
       max-width: 30%;
@@ -76,13 +74,11 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
       flex-shrink: 0;
     }
-    /* Contenu principal */
     main {
       flex-basis: 70%;
       max-width: 70%;
       flex-grow: 1;
     }
-    /* En-tête avec photo */
     .header-flex {
       display: flex;
       justify-content: space-between;
@@ -96,7 +92,6 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       margin-left: 30px;
     }
-    /* Responsive mobile */
     @media (max-width: 800px) {
       .header-flex {
         flex-direction: column;
@@ -165,6 +160,23 @@
           <li>Japonais : Initiation</li>
         </ul>
 
+        <h2>Formation</h2>
+        <div class="section">
+          <strong>BTS TSGRI</strong> (Niveau III), Créteil (94), 2005-2006<br>
+          Technicien Supérieur Gestionnaire de Ressources Informatiques
+        </div>
+        <div class="section">
+          <strong>BTS Analyste-programmeur</strong> (CNFDI, à distance), 2002-2003<br>
+          Visual Basic, C++, PHP, HTML
+        </div>
+        <div class="section">
+          <strong>DEUG Sciences de la Vie</strong>, Nantes (44), 1997<br>
+          Programmation Pascal et Turbo-Pascal
+        </div>
+        <div class="section">
+          <strong>Bac S, spécialité mathématiques</strong>, Lamballe (22), 1996
+        </div>
+
         <h2>Centres d’intérêt</h2>
         <ul>
           <li>Innovation technologique, veille IT, transformation digitale</li>
@@ -173,12 +185,12 @@
         </ul>
       </aside>
 
-      <!-- Expériences et formation -->
+      <!-- Expériences -->
       <main>
         <h2>Expérience professionnelle</h2>
 
         <div class="section">
-          <h3 class="item-title">Directeur Technique Infrastructure <span class="dates">Alphalink, Paris – Jan. 2024 – Aujourd’hui</span></h3>
+          <h3 class="item-title">Directeur Technique Infrastructure <span class="dates">Alphalink, Pornic – depuis Janvier 2024</span></h3>
           <ul>
             <li>Direction de la stratégie infrastructure et sécurité pour un opérateur télécom national.</li>
             <li>Management d’équipes techniques pluridisciplinaires (systèmes, réseaux, datacenter, VoIP, sécurité).</li>
@@ -234,23 +246,6 @@
             <li><strong>DITI Gendarmerie</strong>, Le Mans (72) – 1999 : Administration réseau informatique (300 postes).</li>
             <li><strong>Ministère de la Justice</strong>, Nantes (44) – 1997 : Agent de saisie (2 mois) – Saisie de demandes d’extraits de casier judiciaire.</li>
           </ul>
-        </div>
-
-        <h2>Formation</h2>
-        <div class="section">
-          <strong>BTS TSGRI</strong> (Niveau III), Créteil (94), 2005-2006<br>
-          Technicien Supérieur Gestionnaire de Ressources Informatiques
-        </div>
-        <div class="section">
-          <strong>BTS Analyste-programmeur</strong> (CNFDI, à distance), 2002-2003<br>
-          Visual Basic, C++, PHP, HTML
-        </div>
-        <div class="section">
-          <strong>DEUG Sciences de la Vie</strong>, Nantes (44), 1997<br>
-          Programmation Pascal et Turbo-Pascal
-        </div>
-        <div class="section">
-          <strong>Bac S, spécialité mathématiques</strong>, Lamballe (22), 1996
         </div>
       </main>
     </div>

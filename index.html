@@ -20,6 +20,31 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
       border-radius: 10px;
       padding: 40px 50px;
+      position: relative;
+    }
+    .language-switcher {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    .language-flag {
+      width: 32px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s, border 0.3s;
+      border: 2px solid transparent;
+      border-radius: 4px;
+    }
+    .language-flag.active {
+      opacity: 1;
+      border: 2px solid #1a237e;
+      border-radius: 4px;
+    }
+    [lang]:not(:lang(fr)) {
+      display: none;
     }
     h1 {
       color: #1a237e;
@@ -112,6 +137,11 @@
         order: 2;
         margin-top: 30px;
       }
+      .language-switcher {
+        position: static;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
     }
     /* MODE NUIT AUTOMATIQUE */
     @media (prefers-color-scheme: dark) {
@@ -141,139 +171,291 @@
   </style>
 </head>
 <body>
+  <!-- Sélecteur de langue -->
+  <div class="language-switcher">
+    <img src="https://flagcdn.com/fr.svg" class="language-flag active" data-lang="fr" alt="Français" title="Français">
+    <img src="https://flagcdn.com/gb.svg" class="language-flag" data-lang="en" alt="English" title="English">
+  </div>
   <div class="container">
-    <!-- En-tête avec photo -->
-    <div class="header-flex">
-      <div>
-        <h1>Damien GUESDON</h1>
-        <div class="info">
-          47 ans &nbsp;|&nbsp; Né le 20/10/1977<br>
-          31, rue Pasteur, 44770 La Plaine-sur-Mer, France<br>
-          <a href="mailto:guesdondamien@free.fr">guesdondamien@free.fr</a> &nbsp;|&nbsp; +33 6 63 71 17 80 &nbsp;|&nbsp; Permis B
+    <!-- ======== FRANÇAIS ======== -->
+    <div lang="fr">
+      <div class="header-flex">
+        <div>
+          <h1>Damien GUESDON</h1>
+          <div class="info">
+            47 ans &nbsp;|&nbsp; Né le 20/10/1977<br>
+            31, rue Pasteur, 44770 La Plaine-sur-Mer, France<br>
+            <a href="mailto:guesdondamien@free.fr">guesdondamien@free.fr</a> &nbsp;|&nbsp; +33 6 63 71 17 80 &nbsp;|&nbsp; Permis B
+          </div>
         </div>
+        <img src="photo.jpg" alt="Damien GUESDON">
       </div>
-      <img src="photo.jpg" alt="Damien GUESDON">
+
+      <h2>Résumé professionnel</h2>
+      <div>
+        Directeur technique avec 20 ans d’expérience, reconnu pour le pilotage d’équipes, la direction de projets stratégiques et l’architecture d’infrastructures complexes et sécurisées. Forte expertise dans la transformation numérique, l’optimisation des coûts et la sécurisation des systèmes d’information. Sens aigu de la qualité de service et capacité à fédérer et faire évoluer les équipes vers l’excellence opérationnelle. Ouvert aux opportunités de Directeur Technique, DSI ou CTO pour accompagner la croissance et l’innovation d’une organisation.
+      </div>
+
+      <div class="cv-flex">
+        <aside>
+          <h2>Compétences clés</h2>
+          <ul>
+            <li>Direction technique & stratégie IT</li>
+            <li>Management & leadership</li>
+            <li>Gestion de projet</li>
+            <li>Architecture systèmes & réseaux</li>
+            <li>Cybersécurité</li>
+            <li>Innovation & veille technologique</li>
+            <li>Relation client & communication</li>
+          </ul>
+
+          <h2>Langues</h2>
+          <ul>
+            <li>Français : Maternelle</li>
+            <li>Anglais : Courant + Technique</li>
+            <li>Catalan : En cours d’apprentissage</li>
+            <li>Allemand : Notions</li>
+            <li>Japonais : Initiation</li>
+          </ul>
+
+          <h2>Formation</h2>
+          <div class="section">
+            <strong>BTS TSGRI</strong> (Niveau III), Créteil (94), 2005-2006<br>
+            Technicien Supérieur Gestionnaire de Ressources Informatiques
+          </div>
+          <div class="section">
+            <strong>BTS Analyste-programmeur</strong> (CNFDI, à distance), 2002-2003<br>
+            Visual Basic, C++, PHP, HTML
+          </div>
+          <div class="section">
+            <strong>DEUG Sciences de la Vie</strong>, Nantes (44), 1997<br>
+            Programmation Pascal et Turbo-Pascal
+          </div>
+          <div class="section">
+            <strong>Bac S, spécialité mathématiques</strong>, Lamballe (22), 1996
+          </div>
+
+          <h2>Centres d’intérêt</h2>
+          <ul>
+            <li>Innovation technologique, veille IT, transformation digitale</li>
+            <li>Ludothèque, escape games, géocaching</li>
+            <li>Voyages, gastronomie, ski, randonnée, nautisme</li>
+          </ul>
+        </aside>
+
+        <main>
+          <h2>Expérience professionnelle</h2>
+          <div class="section">
+            <h3 class="item-title">Directeur Technique Infrastructure <span class="dates">Alphalink, Pornic – depuis Janvier 2024</span></h3>
+            <ul>
+              <li>Direction de la stratégie infrastructure et sécurité pour un opérateur télécom national.</li>
+              <li>Management d’équipes techniques pluridisciplinaires (systèmes, réseaux, datacenter, VoIP, sécurité).</li>
+              <li>Pilotage de projets de transformation et de modernisation des infrastructures : évolution du cœur de réseau MPLS, déploiement et conception de l’infrastructure de cybersécurité, virtualisation, automatisation.</li>
+              <li>Mise en place d’un process de gestion des changements structuré, avec animation d’un Change Advisory Board (CAB).</li>
+              <li>Optimisation des process, gestion des budgets et des fournisseurs.</li>
+              <li>Mise en place de politiques de sécurité et de conformité (ISO, RGPD).</li>
+              <li>Représentation technique auprès de la direction générale.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3 class="item-title">Dirigeant / CTO – Conseil & Direction Technique <span class="dates">KISAI DG, SLU – Andorre – 2018 – Déc. 2023</span></h3>
+            <ul>
+              <li>Conseil stratégique et opérationnel auprès de clients (opérateurs, intégrateurs, PME/ETI).</li>
+              <li>Direction technique en prestation pour des clients grands comptes et opérateurs.</li>
+              <li>Définition et mise en œuvre de feuilles de route IT, transformation digitale, cybersécurité.</li>
+              <li>Supervision de projets d’envergure : refonte réseaux, automatisation, supervision.</li>
+              <li>Encadrement et montée en compétence des équipes techniques.</li>
+              <li>Accompagnement du changement et gestion de la relation client au niveau direction.</li>
+              <li>Gestion de projets d’intégration d’infrastructures critiques, déploiement de datacenters, backbone opérateur, services FAI.</li>
+              <li>DSI externalisé pour plusieurs clients.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3 class="item-title">Directeur Technique / Consultant Système Réseau <span class="dates">Auto-entrepreneur, La Plaine-sur-Mer (44) – 2011 – 2018</span></h3>
+            <ul>
+              <li>Déploiement et administration de backbone opérateur, datacenters, réseaux MPLS.</li>
+              <li>Ingénierie réseau, intégration de services FAI, DSI externalisé.</li>
+              <li>Management de projets et accompagnement des clients dans la transformation de leur SI.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3 class="item-title">Architecte Réseau <span class="dates">ALPHALINK, Pornic (44) – 2008 – 2011</span></h3>
+            <ul>
+              <li>Design d’architectures réseaux, gestion de projets, formation client.</li>
+              <li>Encadrement et formation d’équipe de production.</li>
+              <li>Administration système, VOIP, réseau sur plateformes Linux.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3 class="item-title">Expériences antérieures <span class="dates">2005 – 2008</span></h3>
+            <ul>
+              <li><strong>PYGRAM</strong>, Nantes (44) – 2007-2008 : Gestionnaire Système et Réseau – Déploiement de solutions TSE en cluster, virtualisation embarquée (VmWare).</li>
+              <li><strong>Renault</strong>, Le Mans (72) – 2007 : Administrateur Système – Gestion de parc informatique (1900 postes), maintenance, assistance, formation, sauvegardes.</li>
+              <li><strong>BI-SAM</strong>, Paris 8 (75) – 2006-2007 : Administrateur Système UNIX – Installation et administration serveurs UNIX (AIX), monitoring (Nagios), sauvegardes (Backup Exec).</li>
+              <li><strong>BNP Paribas</strong>, Paris 8 (75) – 2006 : TSGRI – Administration serveurs Linux Debian, Windows NT et 2003, mise en place de filtrage open source (IPCop).</li>
+              <li><strong>ACRELEC</strong>, France – 2008 : Technicien Informatique Itinérant (6 mois) – Déploiement et installation de réseaux informatiques (restauration).</li>
+              <li><strong>CLUB INTERNET</strong>, Paris 19 (75) – 2005 : Technicien Hotline (1 an) – Support utilisateur, dépannage et installation ADSL.</li>
+              <li><strong>DITI Gendarmerie</strong>, Le Mans (72) – 1999 : Administration réseau informatique (300 postes).</li>
+              <li><strong>Ministère de la Justice</strong>, Nantes (44) – 1997 : Agent de saisie (2 mois) – Saisie de demandes d’extraits de casier judiciaire.</li>
+            </ul>
+          </div>
+        </main>
+      </div>
     </div>
 
-    <!-- Résumé professionnel -->
-    <h2>Résumé professionnel</h2>
-    <div>
-      Directeur technique avec 20 ans d’expérience, reconnu pour le pilotage d’équipes, la direction de projets stratégiques et l’architecture d’infrastructures complexes et sécurisées. Forte expertise dans la transformation numérique, l’optimisation des coûts et la sécurisation des systèmes d’information. Sens aigu de la qualité de service et capacité à fédérer et faire évoluer les équipes vers l’excellence opérationnelle. Ouvert aux opportunités de Directeur Technique, DSI ou CTO pour accompagner la croissance et l’innovation d’une organisation.
-    </div>
-
-    <!-- Contenu principal + barre latérale -->
-    <div class="cv-flex">
-      <!-- Bande latérale -->
-      <aside>
-        <h2>Compétences clés</h2>
-        <ul>
-          <li>Direction technique & stratégie IT</li>
-          <li>Management & leadership</li>
-          <li>Gestion de projet</li>
-          <li>Architecture systèmes & réseaux</li>
-          <li>Cybersécurité</li>
-          <li>Innovation & veille technologique</li>
-          <li>Relation client & communication</li>
-        </ul>
-
-        <h2>Langues</h2>
-        <ul>
-          <li>Français : Maternelle</li>
-          <li>Anglais : Courant + Technique</li>
-          <li>Catalan : En cours d’apprentissage</li>
-          <li>Allemand : Notions</li>
-          <li>Japonais : Initiation</li>
-        </ul>
-
-        <h2>Formation</h2>
-        <div class="section">
-          <strong>BTS TSGRI</strong> (Niveau III), Créteil (94), 2005-2006<br>
-          Technicien Supérieur Gestionnaire de Ressources Informatiques
+    <!-- ======== ENGLISH ======== -->
+    <div lang="en">
+      <div class="header-flex">
+        <div>
+          <h1>Damien GUESDON</h1>
+          <div class="info">
+            47 years old | Born 10/20/1977<br>
+            31 Pasteur Street, 44770 La Plaine-sur-Mer, France<br>
+            <a href="mailto:guesdondamien@free.fr">guesdondamien@free.fr</a> | +33 6 63 71 17 80 | Driving License
+          </div>
         </div>
-        <div class="section">
-          <strong>BTS Analyste-programmeur</strong> (CNFDI, à distance), 2002-2003<br>
-          Visual Basic, C++, PHP, HTML
-        </div>
-        <div class="section">
-          <strong>DEUG Sciences de la Vie</strong>, Nantes (44), 1997<br>
-          Programmation Pascal et Turbo-Pascal
-        </div>
-        <div class="section">
-          <strong>Bac S, spécialité mathématiques</strong>, Lamballe (22), 1996
-        </div>
+        <img src="photo.jpg" alt="Damien GUESDON">
+      </div>
 
-        <h2>Centres d’intérêt</h2>
-        <ul>
-          <li>Innovation technologique, veille IT, transformation digitale</li>
-          <li>Ludothèque, escape games, géocaching</li>
-          <li>Voyages, gastronomie, ski, randonnée, nautisme</li>
-        </ul>
-      </aside>
+      <h2>Professional Summary</h2>
+      <div>
+        Technical Director with 20 years of experience, recognized for leading teams, managing strategic projects, and architecting complex and secure infrastructures. Strong expertise in digital transformation, cost optimization, and information systems security. Highly committed to service quality, with a proven ability to unite and develop teams towards operational excellence. Open to CTO, CIO, or Technical Director opportunities to support organizational growth and innovation.
+      </div>
 
-      <!-- Expériences -->
-      <main>
-        <h2>Expérience professionnelle</h2>
-
-        <div class="section">
-          <h3 class="item-title">Directeur Technique Infrastructure <span class="dates">Alphalink, Pornic – depuis Janvier 2024</span></h3>
+      <div class="cv-flex">
+        <aside>
+          <h2>Key Skills</h2>
           <ul>
-            <li>Direction de la stratégie infrastructure et sécurité pour un opérateur télécom national.</li>
-            <li>Management d’équipes techniques pluridisciplinaires (systèmes, réseaux, datacenter, VoIP, sécurité).</li>
-            <li>Pilotage de projets de transformation et de modernisation des infrastructures : évolution du cœur de réseau MPLS, déploiement et conception de l’infrastructure de cybersécurité, virtualisation, automatisation.</li>
-            <li>Mise en place d’un process de gestion des changements structuré, avec animation d’un Change Advisory Board (CAB).</li>
-            <li>Optimisation des process, gestion des budgets et des fournisseurs.</li>
-            <li>Mise en place de politiques de sécurité et de conformité (ISO, RGPD).</li>
-            <li>Représentation technique auprès de la direction générale.</li>
+            <li>Technical leadership & IT strategy</li>
+            <li>Team management & leadership</li>
+            <li>Project management</li>
+            <li>Systems & network architecture</li>
+            <li>Cybersecurity</li>
+            <li>Innovation & technology watch</li>
+            <li>Client relations & communication</li>
           </ul>
-        </div>
 
-        <div class="section">
-          <h3 class="item-title">Dirigeant / CTO – Conseil & Direction Technique <span class="dates">KISAI DG, SLU – Andorre – 2018 – Déc. 2023</span></h3>
+          <h2>Languages</h2>
           <ul>
-            <li>Conseil stratégique et opérationnel auprès de clients (opérateurs, intégrateurs, PME/ETI).</li>
-            <li>Direction technique en prestation pour des clients grands comptes et opérateurs.</li>
-            <li>Définition et mise en œuvre de feuilles de route IT, transformation digitale, cybersécurité.</li>
-            <li>Supervision de projets d’envergure : refonte réseaux, automatisation, supervision.</li>
-            <li>Encadrement et montée en compétence des équipes techniques.</li>
-            <li>Accompagnement du changement et gestion de la relation client au niveau direction.</li>
-            <li>Gestion de projets d’intégration d’infrastructures critiques, déploiement de datacenters, backbone opérateur, services FAI.</li>
-            <li>DSI externalisé pour plusieurs clients.</li>
+            <li>French: Native</li>
+            <li>English: Fluent (including technical)</li>
+            <li>Catalan: In progress</li>
+            <li>German: Basic</li>
+            <li>Japanese: Beginner</li>
           </ul>
-        </div>
 
-        <div class="section">
-          <h3 class="item-title">Directeur Technique / Consultant Système Réseau <span class="dates">Auto-entrepreneur, La Plaine-sur-Mer (44) – 2011 – 2018</span></h3>
-          <ul>
-            <li>Déploiement et administration de backbone opérateur, datacenters, réseaux MPLS.</li>
-            <li>Ingénierie réseau, intégration de services FAI, DSI externalisé.</li>
-            <li>Management de projets et accompagnement des clients dans la transformation de leur SI.</li>
-          </ul>
-        </div>
+          <h2>Education</h2>
+          <div class="section">
+            <strong>Higher Technical Diploma (BTS) in IT Resource Management</strong>, Créteil, France, 2005-2006<br>
+            (BTS TSGRI – “Technicien Supérieur Gestionnaire de Ressources Informatiques”)
+          </div>
+          <div class="section">
+            <strong>Higher Technical Diploma (BTS) in Computer Programming</strong>, CNFDI (remote), 2002-2003<br>
+            Visual Basic, C++, PHP, HTML
+          </div>
+          <div class="section">
+            <strong>DEUG in Life Sciences</strong>, Nantes, France, 1997<br>
+            Pascal and Turbo-Pascal programming
+          </div>
+          <div class="section">
+            <strong>Scientific Baccalaureate, Mathematics Major</strong>, Lamballe, France, 1996
+          </div>
 
-        <div class="section">
-          <h3 class="item-title">Architecte Réseau <span class="dates">ALPHALINK, Pornic (44) – 2008 – 2011</span></h3>
+          <h2>Interests</h2>
           <ul>
-            <li>Design d’architectures réseaux, gestion de projets, formation client.</li>
-            <li>Encadrement et formation d’équipe de production.</li>
-            <li>Administration système, VOIP, réseau sur plateformes Linux.</li>
+            <li>Technology innovation, IT watch, digital transformation</li>
+            <li>Board games, escape rooms, geocaching</li>
+            <li>Travel, gastronomy, skiing, hiking, boating</li>
           </ul>
-        </div>
+        </aside>
 
-        <div class="section">
-          <h3 class="item-title">Expériences antérieures <span class="dates">2005 – 2008</span></h3>
-          <ul>
-            <li><strong>PYGRAM</strong>, Nantes (44) – 2007-2008 : Gestionnaire Système et Réseau – Déploiement de solutions TSE en cluster, virtualisation embarquée (VmWare).</li>
-            <li><strong>Renault</strong>, Le Mans (72) – 2007 : Administrateur Système – Gestion de parc informatique (1900 postes), maintenance, assistance, formation, sauvegardes.</li>
-            <li><strong>BI-SAM</strong>, Paris 8 (75) – 2006-2007 : Administrateur Système UNIX – Installation et administration serveurs UNIX (AIX), monitoring (Nagios), sauvegardes (Backup Exec).</li>
-            <li><strong>BNP Paribas</strong>, Paris 8 (75) – 2006 : TSGRI – Administration serveurs Linux Debian, Windows NT et 2003, mise en place de filtrage open source (IPCop).</li>
-            <li><strong>ACRELEC</strong>, France – 2008 : Technicien Informatique Itinérant (6 mois) – Déploiement et installation de réseaux informatiques (restauration).</li>
-            <li><strong>CLUB INTERNET</strong>, Paris 19 (75) – 2005 : Technicien Hotline (1 an) – Support utilisateur, dépannage et installation ADSL.</li>
-            <li><strong>DITI Gendarmerie</strong>, Le Mans (72) – 1999 : Administration réseau informatique (300 postes).</li>
-            <li><strong>Ministère de la Justice</strong>, Nantes (44) – 1997 : Agent de saisie (2 mois) – Saisie de demandes d’extraits de casier judiciaire.</li>
-          </ul>
-        </div>
-      </main>
+        <main>
+          <h2>Professional Experience</h2>
+          <div class="section">
+            <h3 class="item-title">Technical Director Infrastructure <span class="dates">Alphalink, Pornic – since January 2024</span></h3>
+            <ul>
+              <li>Directed infrastructure and security strategy for a national telecom operator.</li>
+              <li>Managed multidisciplinary technical teams (systems, networks, datacenter, VoIP, security).</li>
+              <li>Led transformation and modernization projects: MPLS core network evolution, deployment and design of cybersecurity infrastructure, virtualization, automation.</li>
+              <li>Established a structured change management process, including leading a Change Advisory Board (CAB).</li>
+              <li>Optimized processes, managed budgets and suppliers.</li>
+              <li>Implemented security and compliance policies (ISO, GDPR).</li>
+              <li>Technical representation with executive management.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3 class="item-title">Founder / CTO – Consulting & Technical Leadership <span class="dates">KISAI DG, SLU – Andorra – 2018 – Dec. 2023</span></h3>
+            <ul>
+              <li>Provided strategic and operational consulting to clients (telecom operators, integrators, SMEs/ETIs).</li>
+              <li>Served as technical director on assignment for major clients and operators.</li>
+              <li>Defined and implemented IT roadmaps, digital transformation, cybersecurity.</li>
+              <li>Supervised large-scale projects: network redesign, automation, monitoring.</li>
+              <li>Managed and developed technical teams.</li>
+              <li>Facilitated change management and client relations at executive level.</li>
+              <li>Oversaw critical infrastructure integration projects, datacenter deployment, operator backbone, ISP services.</li>
+              <li>Acted as outsourced CIO for several clients.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3 class="item-title">Technical Director / Systems & Network Consultant <span class="dates">Freelance, La Plaine-sur-Mer – 2011 – 2018</span></h3>
+            <ul>
+              <li>Deployed and managed operator backbone, datacenters, MPLS networks.</li>
+              <li>Network engineering, ISP service integration, outsourced CIO.</li>
+              <li>Project management and client support for IT transformation.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3 class="item-title">Network Architect <span class="dates">ALPHALINK, Pornic – 2008 – 2011</span></h3>
+            <ul>
+              <li>Designed network architectures, managed projects, provided client training.</li>
+              <li>Led and trained production teams.</li>
+              <li>Systems administration, VoIP, Linux-based networks.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3 class="item-title">Previous Experience <span class="dates">2005 – 2008</span></h3>
+            <ul>
+              <li><strong>PYGRAM</strong>, Nantes – 2007-2008: Systems & Network Manager – Deployed clustered TSE solutions, embedded virtualization (VmWare).</li>
+              <li><strong>Renault</strong>, Le Mans – 2007: Systems Administrator – Managed IT assets (1,900 workstations), maintenance, support, training, backups.</li>
+              <li><strong>BI-SAM</strong>, Paris – 2006-2007: UNIX Systems Administrator – Installed and managed UNIX (AIX) servers, monitoring (Nagios), backups (Backup Exec).</li>
+              <li><strong>BNP Paribas</strong>, Paris – 2006: IT Specialist – Administered Debian Linux, Windows NT and 2003 servers, implemented open-source filtering (IPCop).</li>
+              <li><strong>ACRELEC</strong>, France – 2008: IT Field Technician (6 months) – Deployed and installed IT networks (restaurant sector).</li>
+              <li><strong>CLUB INTERNET</strong>, Paris – 2005: Support Technician (1 year) – User support, troubleshooting and ADSL installation.</li>
+              <li><strong>DITI Gendarmerie</strong>, Le Mans – 1999: IT network administration (300 workstations).</li>
+              <li><strong>Ministry of Justice</strong>, Nantes – 1997: Data entry clerk (2 months) – Entered criminal record requests.</li>
+            </ul>
+          </div>
+        </main>
+      </div>
     </div>
   </div>
+  <script>
+    // Détection automatique de la langue
+    function switchLanguage(lang) {
+      document.querySelectorAll('[lang]').forEach(el => {
+        el.style.display = el.lang === lang ? 'block' : 'none';
+      });
+      document.querySelectorAll('.language-flag').forEach(flag => {
+        flag.classList.toggle('active', flag.dataset.lang === lang);
+      });
+      localStorage.setItem('preferredLang', lang);
+    }
+    // Sur clic drapeau
+    document.querySelectorAll('.language-flag').forEach(flag => {
+      flag.addEventListener('click', () => {
+        switchLanguage(flag.dataset.lang);
+      });
+    });
+    // Au chargement : langue préférée ou navigateur
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferredLang');
+      if (savedLang) {
+        switchLanguage(savedLang);
+      } else {
+        const userLang = navigator.language || navigator.userLanguage;
+        switchLanguage(userLang.startsWith('en') ? 'en' : 'fr');
+      }
+    });
+  </script>
 </body>
 </html>

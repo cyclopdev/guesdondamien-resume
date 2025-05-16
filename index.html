@@ -233,7 +233,7 @@
             </div>
             <h2>Centres d’intérêt</h2>
             <ul>
-              <li>Innovation technologique, veille IT, transformation digitale, Intelligence Artificielle</li>
+              <li>Innovation technologique, veille IT, transformation digitale</li>
               <li>Ludothèque, escape games, géocaching</li>
               <li>Voyages, gastronomie, ski, randonnée, nautisme</li>
             </ul>
@@ -422,11 +422,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       function switchLanguage(lang) {
         document.querySelectorAll('[lang]').forEach(el => {
-          if (el.lang === lang) {
-            el.classList.remove('lang-hidden');
-          } else {
-            el.classList.add('lang-hidden');
-          }
+          el.classList.toggle('lang-hidden', el.lang !== lang);
         });
         document.querySelectorAll('.language-flag').forEach(flag => {
           flag.classList.toggle('active', flag.dataset.lang === lang);

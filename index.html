@@ -44,6 +44,9 @@
       opacity: 1;
       border: 2px solid #1a237e;
     }
+    .lang-hidden {
+      display: none !important;
+    }
     h1 {
       color: #1a237e;
       font-size: 2.5em;
@@ -165,7 +168,6 @@
         color: #90caf9;
       }
     }
-    /* NE PAS RAJOUTER DE REGLE QUI MASQUE [lang] ! */
   </style>
 </head>
 <body>
@@ -296,7 +298,7 @@
         </div>
       </div>
       <!-- ======== ENGLISH ======== -->
-      <div lang="en" hidden>
+      <div lang="en" class="lang-hidden">
         <div class="header-flex">
           <div>
             <h1>Damien GUESDON</h1>
@@ -419,18 +421,13 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       function switchLanguage(lang) {
-        let found = false;
         document.querySelectorAll('[lang]').forEach(el => {
           if (el.lang === lang) {
-            el.removeAttribute('hidden');
-            found = true;
+            el.classList.remove('lang-hidden');
           } else {
-            el.setAttribute('hidden', '');
+            el.classList.add('lang-hidden');
           }
         });
-        if (!found) {
-          document.querySelector('[lang="fr"]').removeAttribute('hidden');
-        }
         document.querySelectorAll('.language-flag').forEach(flag => {
           flag.classList.toggle('active', flag.dataset.lang === lang);
         });

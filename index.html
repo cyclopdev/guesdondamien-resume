@@ -6,6 +6,9 @@
   <title>Damien GUESDON - CV</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <style>
+    [lang] { display: block !important; } /* Règle critique */
+    .lang-hidden { display: none !important; }
+
     body {
       font-family: 'Roboto', Arial, sans-serif;
       background: #f7f9fb;
@@ -43,9 +46,6 @@
     .language-flag.active {
       opacity: 1;
       border: 2px solid #1a237e;
-    }
-    .lang-hidden {
-      display: none !important;
     }
     h1 {
       color: #1a237e;
@@ -171,7 +171,6 @@
   </style>
 </head>
 <body>
-  <!-- Sélecteur de langue -->
   <div class="language-switcher">
     <img src="https://flagcdn.com/fr.svg" class="language-flag active" data-lang="fr" alt="Français" title="Français">
     <img src="https://flagcdn.com/gb.svg" class="language-flag" data-lang="en" alt="English" title="English">
@@ -421,26 +420,19 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       function switchLanguage(lang) {
-        document.querySelectorAll('[lang]').forEach(el => {
-          el.classList.toggle('lang-hidden', el.lang !== lang);
-        });
+        document.querySelectorAll('[lang]').forEach(el => el.classList.add('lang-hidden'));
+        const target = document.querySelector(`[lang="${lang}"]`);
+        if (target) target.classList.remove('lang-hidden');
         document.querySelectorAll('.language-flag').forEach(flag => {
           flag.classList.toggle('active', flag.dataset.lang === lang);
         });
         localStorage.setItem('preferredLang', lang);
       }
       document.querySelectorAll('.language-flag').forEach(flag => {
-        flag.addEventListener('click', () => {
-          switchLanguage(flag.dataset.lang);
-        });
+        flag.addEventListener('click', () => switchLanguage(flag.dataset.lang));
       });
       const savedLang = localStorage.getItem('preferredLang');
-      if (savedLang) {
-        switchLanguage(savedLang);
-      } else {
-        const userLang = navigator.language || navigator.userLanguage;
-        switchLanguage(userLang.startsWith('en') ? 'en' : 'fr');
-      }
+      switchLanguage(savedLang || (navigator.language.startsWith('en') ? 'en' : 'fr'));
     });
   </script>
 </body>

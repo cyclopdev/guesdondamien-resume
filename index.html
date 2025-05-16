@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- SERIAL: v20240518-02 -->
   <meta charset="UTF-8">
-  <title>Test</title>
+  <title>Test Multilingue</title>
   <style>
     [lang] { display: none; }
     body.lang-fr [lang="fr"],
@@ -11,29 +12,34 @@
   </style>
 </head>
 <body>
-  <div class="language-switcher">
-    <button data-lang="fr" class="language-flag active">FR</button>
-    <button data-lang="en" class="language-flag">EN</button>
+  <div>
+    <button class="language-flag active" data-lang="fr">FR</button>
+    <button class="language-flag" data-lang="en">EN</button>
   </div>
-  <div lang="fr">Contenu Français</div>
-  <div lang="en">English Content</div>
+  <div lang="fr">
+    <h1>Bonjour</h1>
+    <p>Section française</p>
+  </div>
+  <div lang="en">
+    <h1>Hello</h1>
+    <p>English section</p>
+  </div>
   <script>
-    // JavaScript corrigé ci-dessus
     document.addEventListener('DOMContentLoaded', function() {
-  function switchLanguage(lang) {
-    document.body.className = ''; // Réinitialise les classes
-    document.body.classList.add('lang-' + lang);
-    document.querySelectorAll('.language-flag').forEach(flag => {
-      flag.classList.toggle('active', flag.dataset.lang === lang);
+      function switchLanguage(lang) {
+        document.body.classList.remove('lang-fr', 'lang-en');
+        document.body.classList.add('lang-' + lang);
+        document.querySelectorAll('.language-flag').forEach(flag => {
+          flag.classList.toggle('active', flag.dataset.lang === lang);
+        });
+        localStorage.setItem('preferredLang', lang);
+      }
+      document.querySelectorAll('.language-flag').forEach(flag => {
+        flag.addEventListener('click', () => switchLanguage(flag.dataset.lang));
+      });
+      const savedLang = localStorage.getItem('preferredLang');
+      switchLanguage(savedLang || 'fr');
     });
-    localStorage.setItem('preferredLang', lang);
-  }
-  const savedLang = localStorage.getItem('preferredLang') || 'fr';
-  switchLanguage(savedLang); // Force le choix initial
-  document.querySelectorAll('.language-flag').forEach(flag => {
-    flag.addEventListener('click', () => switchLanguage(flag.dataset.lang));
-  });
-});
   </script>
 </body>
 </html>
